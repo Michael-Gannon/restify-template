@@ -1,0 +1,23 @@
+{ "excludeFiles":
+  [ "node_modules/**"
+  , "coverage"
+  ]
+, "disallowMultipleLineBreaks": true
+, "disallowEmptyBlocks": true
+, "disallowSpaceAfterObjectKeys": true
+, "requireCommaBeforeLineBreak": true
+, "disallowTrailingWhitespace": true
+, "requireCapitalizedConstructors": true
+, "requireSpacesInsideObjectBrackets": "all"
+, "disallowSpacesInsideArrayBrackets": true
+, "validateLineBreaks": "LF"
+, "requireSpaceBeforeBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
+, "requireSpaceAfterBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
+, "disallowSpaceAfterKeywords": [ "if", "for", "while", "do", "switch", "try", "catch" ]
+, "disallowSpaceAfterPrefixUnaryOperators": [ "++", "--", "+", "-", "~", "!" ]
+, "disallowSpaceBeforePostfixUnaryOperators": [ "++", "--" ]
+, "requireSpaceBeforeBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
+, "requireSpaceAfterBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
+, "disallowKeywordsOnNewLine": [ "else" ]
+, "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": true }
+}

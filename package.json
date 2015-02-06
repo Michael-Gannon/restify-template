@@ -1,0 +1,26 @@
+{
+  "name": "ListingProvider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "forever": "^0.14.1",
+    "istanbul": "^0.3.5",
+    "jscs": "^1.10.0",
+    "jshint": "^2.6.0",
+    "mocha": "^2.1.0",
+    "mocha-funnynyan-reporter": "0.0.1",
+    "nock": "^0.59.1",
+    "rewire": "^2.1.4",
+    "should": "^4.6.2",
+    "sinon": "^1.12.2",
+    "supertest": "^0.15.0"
+  },
+  "dependencies": {
+    "bunyan": "^1.3.3",
+    "cli-table": "^0.3.1",
+    "restify": "^2.8.5"
+  }
+}
