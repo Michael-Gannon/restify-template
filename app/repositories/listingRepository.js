@@ -13,16 +13,19 @@ module.exports.ping = function(done) {
   return done(error);
 };
 
-module.exports.find = function(id) {
+module.exports.find = function(id, done) {
   for(var i = 0; i < listingsDataStore.length; i++) {
     if(listingsDataStore[i].name === id) {
-      return new Listing({ name: listingsDataStore[i].name });
+      done(new Listing({ name: listingsDataStore[i].name }));
+      return;
     }
   }
 };
 
-module.exports.all = function(id) {
-  return listingsDataStore.map(function(dataStoreListing) {
+module.exports.all = function(done) {
+  listings = listingsDataStore.map(function(dataStoreListing) {
     return new Listing({ name: dataStoreListing.name });
   });
+
+  done(listings);
 };

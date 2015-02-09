@@ -10,18 +10,20 @@ var formatResponse = function(listings) {
 };
 
 module.exports.list = function(req, res, next) {
-  res.send(formatResponse(listingRepository.all()));
-  next();
+  listingRepository.all(function(listings) {
+    res.send(formatResponse(listings));
+    next();
+  });
 };
 
 module.exports.show = function(req, res, next) {
-  var name = req.params.name,
-      listing = listingRepository.find(name);
+  var name = req.params.name;
+  listingRepository.find(name, function(listing) {
+    if(!listing) {
+      return next(new restify.errors.NotFoundError(name + ' not found'));
+    }
 
-  if(!listing) {
-    return next(new restify.errors.NotFoundError(name + ' not found'));
-  }
-
-  res.send(formatResponse([listing]));
-  next();
+    res.send(formatResponse([listing]));
+    next();
+  });
 };

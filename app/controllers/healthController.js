@@ -7,6 +7,6 @@ module.exports.get = function(req, res, next) {
     } else {
       res.send({ ok: true });
     }
+    next();
   });
-  next();
 };
