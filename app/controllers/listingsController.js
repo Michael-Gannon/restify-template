@@ -1,6 +1,6 @@
 var restify = require('restify'),
-    listingPresenter = require('../presenters/listingPresenter'),
-    listingRepository = require('../repositories/listingRepository');
+  listingPresenter = require('../presenters/listingPresenter'),
+  listingRepository = require('../repositories/listingRepository');
 
 var formatResponse = function(listings) {
   return {
@@ -22,7 +22,6 @@ module.exports.show = function(req, res, next) {
     if(!listing) {
       return next(new restify.errors.NotFoundError(name + ' not found'));
     }
-
     res.send(formatResponse([listing]));
     next();
   });
