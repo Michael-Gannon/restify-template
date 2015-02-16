@@ -1,37 +1,22 @@
-var client = require('restify').createJsonClient('http://localhost:8080');
-
-before(function(done){
-  client.get('/health', function(err, req, res, obj) {
-    done(err);
-  });
-});
+var server = require('../../app/core/server'),
+    request = require('supertest');
 
 describe('/listings', function () {
-  var statusCode,
-      body;
-
-  before(function(done) {
-    client.get('/listing', function(err, req, res, obj) {
-      statusCode = res.statusCode;
-      body = obj;
-      done(err);
-    });
+  it('should return status 200', function (done) {
+    request(server)
+      .get('/listing')
+      .expect(200)
+      .end(done);
   });
 
-  it('should return status 200', function () {
-    statusCode.should.equal(200);
-  });
-
-  it('should return the listings', function () {
-    var expectedResponse = {
-      "listings": [
+  it('should return the listings', function (done) {
+    request(server)
+      .get('/listing')
+      .expect({ "listings": [
         {"listingName":"foo","links":[{"self":"/listing/foo"}]},
         {"listingName":"bar","links":[{"self":"/listing/bar"}]},
-        {"listingName":"moo","links":[{"self":"/listing/moo"}]}
-      ],
-      "length": 3
-    };
-
-    body.should.eql(expectedResponse);
+        {"listingName":"moo","links":[{"self":"/listing/moo"}]}],
+        "length": 3 })
+      .end(done);
   });
 });

@@ -1,9 +1,10 @@
 var restify = require('restify'),
-    requestLogger = require('./requestLogger'),
+    log = require('./logger'),
     uncaughtServerExceptionHandler = require('./uncaughtServerExceptionHandler');
 
 var server = restify.createServer({
-  name: 'ListingService'
+  name: 'ListingService',
+  log: log
 });
 
 server.use(restify.acceptParser(server.acceptable));
@@ -13,8 +14,30 @@ server.use(restify.queryParser());
 server.use(restify.jsonp());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser());
-server.use(requestLogger.logRequests({ ignore: [/\/health/] }));
 server.on('uncaughtException', uncaughtServerExceptionHandler);
+
+server.pre(function(req, res, next) {
+  req.log.info({
+    time: new Date().getTime(),
+    id: req.id(),
+    method: req.method,
+    path: req.path(),
+    state: "started"
+  });
+  next();
+});
+
+server.on('after', function(req, res, route) {
+  req.log.info({
+    time: new Date().getTime(),
+    id: req.id(),
+    method: route.spec.method,
+    path: route.spec.path,
+    statusCode: res.statusCode,
+    length: res.headers()['content-length'],
+    state: "finished"
+  });
+});
 
 module.exports = server;
 
