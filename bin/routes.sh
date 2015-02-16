@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var Table = require('cli-table'),
-    routeHelper = require('../app/core/routeHelper'),
     server = require('../app/core/server');
 
 var table = new Table({ head: ["", "Path"] }),

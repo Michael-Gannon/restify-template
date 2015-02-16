@@ -17,3 +17,9 @@ To run:
 ./bin/stop - stops the server
 ./bin/test - runs lint, style, specs and coverage (fails fast)
 ./bin/routes - prints the HTTP routes of the service
+
+
+TODO:
+units & coverage
+deploy to AWS
+done(err, result) v promises etc

@@ -1,6 +1,6 @@
 var ignore;
 
-var logBefore = function(req, res) {
+var logBefore = function(req) {
   console.log(JSON.stringify({
     time: new Date().getTime(),
     id: req.id(),

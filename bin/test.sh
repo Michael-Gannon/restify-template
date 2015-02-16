@@ -1,6 +1,14 @@
 #!/bin/bash
+
+#lint
 ./node_modules/.bin/jshint index.js ./app/ --reporter unix &&
+
+#code standards
 ./node_modules/.bin/jscs index.js ./app/ &&
-./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R nyan -r should &&
+
+./bin/unit-test.sh &&
+
+#coverage
 ./node_modules/.bin/istanbul check-coverage &&
-rm -rf coverage
+
+./bin/acceptance-test.sh
