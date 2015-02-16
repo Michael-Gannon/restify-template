@@ -9,6 +9,6 @@
 ./bin/unit-test.sh &&
 
 #coverage
-./node_modules/.bin/istanbul check-coverage &&
+./node_modules/.bin/istanbul --config=./test/istanbul-config.json check-coverage &&
 
 ./bin/acceptance-test.sh
