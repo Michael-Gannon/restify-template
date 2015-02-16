@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#lint
-./node_modules/.bin/jshint index.js ./app/ --reporter unix &&
+echo "checking code quality"
+./node_modules/.bin/jshint index.js ./app/ --reporter unix && #lint
+./node_modules/.bin/jscs index.js ./app/ && #code standards
 
-#code standards
-./node_modules/.bin/jscs index.js ./app/ &&
+printf "\nrunning unit tests"
+./bin/test-unit.sh &&
 
-./bin/unit-test.sh &&
-
-#coverage
+printf "\nchecking test coverage\n"
 ./node_modules/.bin/istanbul --config=./test/istanbul-config.json check-coverage &&
 
-./bin/acceptance-test.sh
+printf "\nrunning acceptance tests\n"
+./bin/test-acceptance.sh

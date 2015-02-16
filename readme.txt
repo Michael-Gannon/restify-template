@@ -20,6 +20,5 @@ To run:
 
 
 TODO:
-units & coverage
 deploy to AWS
 done(err, result) v promises etc
