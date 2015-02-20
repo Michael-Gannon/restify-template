@@ -23,6 +23,7 @@ module.exports.find = function(id, done) {
         return;
       }
     }
+    done();
   });
 };
 
